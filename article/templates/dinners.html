@@ -1,0 +1,27 @@
+<h1> 오늘 저녁은 {{pick.name}}이고, 가격은 {{pick.price}}원 입니다! </h1>
+<h1>메뉴리스트</h1>
+<ul>    {% for menu in menus %}    
+    <li> {{menu.name}} : {{menu.price}}원 </li>    
+    {% endfor %}
+</ul> 
+{% if pick.price > 20000 %} #조건문 시작
+<p>비싸다!</p> #if 조건이 true이면 출력
+{% elif pick.price > 10000 %}<p>적절하다!</p> #elif이면 출력 
+{% else %} <p>저렴하다!</p> #else이면 출력 {% endif %}
+
+<h1> 리뷰 리스트 </h1>
+
+{% for article in articles %}
+<a href="{% url 'articles:review' %}"> [리뷰 작성하기] </a>
+<p> 글 번호 : {{ articles.pk }} </p>
+<p> 글 제목 : {{ articles.title }} </p>
+<p> 글 내용 : {{ articles.content }} </p>
+<a href="{% url 'articles:detail' article.pk %}"> [detail] </a>
+<hr />
+{%endfor %}
+
+{% endblock %}
+
+
+{% endfor %} {% endblock %}
+
